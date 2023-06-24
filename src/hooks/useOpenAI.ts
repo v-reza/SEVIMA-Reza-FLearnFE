@@ -11,7 +11,7 @@ const useOpenAI = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>();
   const AuthorizationToken =
-    "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";
+    "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";
 
   const send = async (content: string) => {
     setLoading(true)
