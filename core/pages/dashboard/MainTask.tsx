@@ -3,6 +3,7 @@ import { Button, Modal } from "@/src/components";
 import SlideOver from "@/src/components/SlideOver";
 import {
   DateInput,
+  TextAreaInput,
   TextInput,
   TimeInput,
   useFormContext,
@@ -66,6 +67,7 @@ const MainDashboard = () => {
         }}
       >
         <TextInput label="Task Name" source="task_name" />
+        <TextAreaInput label="Task Description" source="task_description"/>
         <DateInput label="Start Date" source="task_start_date" />
         <TimeInput label="Start Time" source="task_start_time" />
         <DateInput label="End Date" source="task_end_date" />

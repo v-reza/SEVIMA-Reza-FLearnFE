@@ -1,6 +1,10 @@
 import { Button } from "@/src/components";
 import SlideOver from "@/src/components/SlideOver";
-import { TextInput, useFormContext } from "@/src/components/activeform";
+import {
+  TextAreaInput,
+  TextInput,
+  useFormContext,
+} from "@/src/components/activeform";
 import { useLoadingContext } from "@/src/contexts/LoadingContext";
 import useGet from "@/src/hooks/useGet";
 import useList from "@/src/hooks/useList";
@@ -17,7 +21,7 @@ const DetailTask = () => {
     resource: `task/${params.id}`,
     pks: [],
   });
-  const router = useRouter()
+  const router = useRouter();
   const { data: dataAI, send, clear } = useOpenAI();
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingContext();
 
@@ -46,7 +50,14 @@ const DetailTask = () => {
   return (
     <>
       <div className="flex gap-2">
-        <Button btnType="danger" label="Back" onClick={() => router.push('/dashboard')}/>
+        <Button
+          btnType="danger"
+          label="Back"
+          onClick={() => {
+            router.push("/dashboard");
+            setForm({})
+          }}
+        />
         <Button
           btnType="info"
           label="Ask to GPT"
@@ -79,21 +90,34 @@ const DetailTask = () => {
           <Button btnType="warning" label="Clear" onClick={() => clear()} />
         </div>
       </SlideOver>
-      <div className="w-full bg-[#292F4C] rounded-md mt-4">
+      <div className="w-full bg-[#292F4C] rounded-md mt-4 pb-4">
         <div className="px-10 py-6 flex items-center justify-between">
           <h3 className="text-white text-bold text-lg">Detail Task</h3>
-          <Button btnType="primary" label="Submit" />
         </div>
         <div className="px-10 py-6">
           <div className="flex items-center gap-6">
             <h2 className="text-white text-semibold text-md">
               Task Name - {form.task_name}
             </h2>
-            {/* <span className="text-white text-md">}</span> */}
+          </div>
+          <div className="mt-4">
+            <h2 className="text-white text-semibold text-md">
+              Task Description
+            </h2>
+            <div className="mt-4">
+              <p className="text-white">{form.task_description}</p>
+            </div>
           </div>
         </div>
-        <p></p>
-        <div className="p-20"></div>
+      </div>
+      <div className="w-full bg-[#292F4C] rounded-md mt-4 pb-4">
+        <div className="px-10 py-6 flex items-center justify-between">
+          <h3 className="text-white text-bold text-lg">Your Answer</h3>
+          <Button btnType="primary" label="Submit" />
+        </div>
+        <div className="px-10 py-6">
+          <TextAreaInput source="task_answer" label="Answer" />
+        </div>
       </div>
     </>
   );
