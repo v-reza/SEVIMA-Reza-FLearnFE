@@ -1,3 +1,5 @@
+"use client"
+
 import { useCallback, useEffect, useMemo, useState } from "react";
 import _ from "lodash";
 import * as yup from "yup";

@@ -1,3 +1,4 @@
+"use client"
 import { Fragment, PropsWithChildren, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
