@@ -26,7 +26,7 @@ const Sidebar = () => {
             </Link>
             <div className="bg-gray-600/50 h-[1.6px] w-full" />
             <div className="flex flex-col items-center w-full space-y-4">
-              <Link href="task">
+              <Link href="/dashboard">
                 <Tooltip content="Manage Task" placement="right">
                   <div className="mt-4 flex items-center p-2 hover:bg-gray-700 hover:rounded-md cursor-pointer tooltip-right peer">
                     <i className="fas fa-calendar-check text-indigo-600 text-xl "></i>

@@ -41,13 +41,13 @@ export const UserConnection = (props: UserContextProps) => {
   }, [window.localStorage.getItem("sev_user_login")])
 
 
-  useEffect(() => {
-    if (user) {
-      router.push("/dashboard")
-    } else {
-      router.push("/signin")
-    }
-  }, [JSON.stringify(user)])
+  // useEffect(() => {
+  //   if (user) {
+  //     router.push("/dashboard")
+  //   } else {
+  //     router.push("/signin")
+  //   }
+  // }, [JSON.stringify(user)])
 
 
   const value: FormProps = {

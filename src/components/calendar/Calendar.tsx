@@ -113,6 +113,7 @@ export const Calendar = (props: CalendarProviderProps) => {
         return {
           id: index.toString(),
           title: "",
+          backgroundColor: 'red',
           start: moment(_.get(e, props.pksCalendar.sourceStartDate)).format(
             SERVER_DATE_TIME_FORMAT
           ),

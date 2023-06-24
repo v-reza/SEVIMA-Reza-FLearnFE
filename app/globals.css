@@ -26,3 +26,46 @@ body {
 .fc-today-button {
   text-transform: capitalize !important;
 }
+
+.bg-yellow-calendar {
+  background-color: #FFC700 !important;
+}
+
+.fc-timegrid-event-harness {
+  width: 150px;
+  margin: 5px;
+}
+
+.bg-green-calendar {
+  background-color: #16DB7C !important;
+}
+
+.fc .fc-toolbar-chunk button[disabled] {
+  color: #7E8299 !important;
+}
+
+.fc .fc-daygrid-dot-event, .fc .fc-daygrid-event, .fc .fc-timegrid-event {
+  background-color: #00A3FF !important;
+  color: #ffffff;
+  /* font-size: 15px; */
+  cursor: pointer;
+  font-weight: 500 !important;
+}
+
+.fc .fc-daygrid-event-harness, .fc .fc-timegrid-event-harness {
+  padding: 1rem;
+}
+
+.fc .fc-event-title {
+  margin: 1px;
+  padding: 1px;
+  white-space: normal;
+}
+
+.fc-daygrid-day-number {
+  color: #7E8299;
+}
+
+.fc-more-link {
+  color: #16DB7C !important
+}
