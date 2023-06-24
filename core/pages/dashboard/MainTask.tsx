@@ -13,19 +13,35 @@ import { Calendar } from "@/src/components/calendar";
 import { useLoadingContext } from "@/src/contexts/LoadingContext";
 import { useMutation } from "@/src/hooks/useMutation";
 import moment from "moment";
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import CalendarContent from "./CalendarContent";
 import { useRouter } from "next/navigation";
+import { useUserContext } from "@/src/contexts/UserContext";
 const MainDashboard = () => {
   const [show, setShow] = useState<boolean>(false);
   const { setForm, form } = useFormContext();
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingContext()
+  const { user } = useUserContext()
   const router = useRouter()
   const { save } = useMutation({
     resource: "task",
     pks: ["_id"]
   })
-  console.log({ form });
+
+  console.log({user})
+
+  const defaultFilters = useMemo(() => {
+    let filters = {}
+
+    if (user?.role_code === "S") {
+      filters = {
+        target_classroom_code: user.classroom_code
+      }
+    }
+
+    return filters
+  }, [JSON.stringify(user)])
+
   const calendarResourceRef = useRef<any>(null)
 
   const onSubmit = async () => {
@@ -84,11 +100,13 @@ const MainDashboard = () => {
       </SlideOver>
       <div className="relative w-full h-full">
         <div className="px-6 py-4">
-          <Button
-            btnType="primary"
-            label="Add a New Task"
-            onClick={() => setShow(true)}
-          />
+          {user?.role_code === "T" && (
+            <Button
+              btnType="primary"
+              label="Add a New Task"
+              onClick={() => setShow(true)}
+            />
+          )}
           <div className="mt-6">
             <Calendar
               resource="task"
@@ -97,6 +115,9 @@ const MainDashboard = () => {
               options={{
                 weekMaxEvents: 5,
                 monthMaxEvents: 1,
+              }}
+              filters={{
+                ...defaultFilters
               }}
               pksCalendar={{
                 sourceStartDate: "task_start_date",

@@ -1,13 +1,18 @@
 "use client";
 import React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Tooltip } from "flowbite-react";
-import logoIcon from "@assets/images/logo_icon.png"
+import logoIcon from "@assets/images/logo_icon.png";
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const onLogout = () => {
+    localStorage.removeItem("sev_user_login");
+    router.push("/signin");
+  };
   return (
     <div className="h-screen min-h-full">
       <div className="bg-[#292F4C] px-2 w-[5rem] h-full">
@@ -43,6 +48,11 @@ const Sidebar = () => {
             </div>
           </div>
           <div className="pb-4 flex flex-col-reverse space-y-4 space-y-reverse w-full">
+            <div className="flex items-center justify-center">
+              <div className="flex items-center p-2 hover:bg-gray-700 hover:rounded-md cursor-pointer tooltip-right bg-indigo-600 rounded-md" onClick={() => onLogout()}>
+                <i className="far fa-right-from-bracket text-xl text-white"></i>
+              </div>
+            </div>
             <div className="flex items-center justify-center">
               <div
                 className="flex items-center p-2 hover:bg-gray-700 hover:rounded-md cursor-pointer tooltip-right bg-indigo-600 rounded-md"

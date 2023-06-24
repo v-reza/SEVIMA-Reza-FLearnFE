@@ -33,6 +33,18 @@ export const UserConnection = (props: UserContextProps) => {
     localStorage.setItem("sev_user_login", JSON.stringify(val))
   }
 
+  const realtimeLocalStorage = (e :any) => {
+    console.log(e, e.key, e.newValue)
+  }
+
+  // useEffect(() => {
+  //   window.addEventListener("storage", realtimeLocalStorage)
+
+  //   return () => {
+  //     window.removeEventListener("storage", realtimeLocalStorage)
+  //   }
+  // }, [])
+
   useEffect(() => {
     const user_login = localStorage.getItem("sev_user_login")
     if (user_login) {

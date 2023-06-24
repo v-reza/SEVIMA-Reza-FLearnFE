@@ -9,6 +9,7 @@ import { useMutation } from "@/src/hooks/useMutation";
 
 import { Toast } from "flowbite-react";
 import { useLoadingContext } from "@/src/contexts/LoadingContext";
+import { useUserContext } from "@/src/contexts/UserContext";
 
 const Form = () => {
   const router = useRouter();
@@ -18,6 +19,7 @@ const Form = () => {
     pks: [],
   });
   const { form } = useFormContext()
+  const { setUser } = useUserContext()
   const { showLoadingOverlay, hideLoadingOverlay } = useLoadingContext();
 
   const onLogin = async () => {
@@ -29,7 +31,8 @@ const Form = () => {
         },
       });
       router.push("/dashboard");
-      localStorage.setItem("sev_user_login", JSON.stringify(result));
+      // localStorage.setItem("sev_user_login", JSON.stringify(result));
+      setUser(result)
     } catch (error) {
       setError(true);
     } finally {

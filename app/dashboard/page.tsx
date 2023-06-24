@@ -5,8 +5,10 @@ import MainTask from "@/core/pages/dashboard/MainTask";
 import { Tab } from "@/src/components";
 import React from "react";
 import { Breadcrumb } from "flowbite-react";
+import { useUserContext } from "@/src/contexts/UserContext";
 
 const page = () => {
+  const { user } = useUserContext();
   return (
     <div className="flex flex-1">
       <Sidebar />
@@ -21,12 +23,21 @@ const page = () => {
           <Breadcrumb.Item>Task</Breadcrumb.Item>
         </Breadcrumb>
         <div className="mt-16">
-          <Tab>
-            <Tab.Item label="Calendar Task">
-              <MainTask />
-            </Tab.Item>
-            <Tab.Item label="Monitoring Task">adad</Tab.Item>
-          </Tab>
+          {user?.role_code == "T" && (
+            <Tab>
+              <Tab.Item label="Calendar Task">
+                <MainTask />
+              </Tab.Item>
+              <Tab.Item label="Monitoring Task">adad</Tab.Item>
+            </Tab>
+          )}
+          {user?.role_code === "S" && (
+            <Tab>
+              <Tab.Item label="Calendar Task">
+                <MainTask />
+              </Tab.Item>
+            </Tab>
+          )}
         </div>
       </div>
     </div>

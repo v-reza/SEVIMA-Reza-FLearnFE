@@ -22,38 +22,42 @@ type ButtonProps = {
   label?: string;
   icon?: BtnIconProps;
   onClick?: () => void;
+  disabled?: boolean
 };
 
 export const Button = (props: ButtonProps) => {
-  const { className, btnType, label, icon, classNameLabel } = props;
+  const { className, btnType, label, icon, classNameLabel, disabled = false } = props;
 
   let classes: string = "";
 
-  if (btnType === "primary") {
-    classes =
-      "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
-  } else if (btnType === "secondary") {
-    classes =
-      "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow";
-  } else if (btnType === "danger") {
-    classes =
-      "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded";
-  } else if (btnType === "warning") {
-    classes =
-      "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded";
-  } else if (btnType === "success") {
-    classes =
-      "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded";
-  } else if (btnType === "info") {
-    classes =
-      "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
-  } else if (btnType === "no-outline") {
-    classes =
-      "bg-inherit hover:bg-gray-700 text-gray-800  py-2 px-4 border border-gray-400 rounded";
-  } else if (btnType === "outline-secondary") {
-    classes = "bg-inherit border border-gray-600 hover:bg-gray-700 rounded"
+  if (disabled) {
+    classes = "bg-gray-500 text-white font-bold py-2 px-4 rounded"
+  } else {
+    if (btnType === "primary") {
+      classes =
+        "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
+    } else if (btnType === "secondary") {
+      classes =
+        "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow";
+    } else if (btnType === "danger") {
+      classes =
+        "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded";
+    } else if (btnType === "warning") {
+      classes =
+        "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded";
+    } else if (btnType === "success") {
+      classes =
+        "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded";
+    } else if (btnType === "info") {
+      classes =
+        "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
+    } else if (btnType === "no-outline") {
+      classes =
+        "bg-inherit hover:bg-gray-700 text-gray-800  py-2 px-4 border border-gray-400 rounded";
+    } else if (btnType === "outline-secondary") {
+      classes = "bg-inherit border border-gray-600 hover:bg-gray-700 rounded"
+    }
   }
-
   return (
     <>
       <button
@@ -64,6 +68,7 @@ export const Button = (props: ButtonProps) => {
           classes,
           className
         )}
+        disabled={disabled}
       >
         {icon && icon.position === "left" && icon.className && (
           <i className={clsx("-ml-0.5 mr-2", icon.className)}></i>
