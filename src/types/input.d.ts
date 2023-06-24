@@ -11,3 +11,8 @@ declare interface InputProps {
 declare interface InputActiveProps extends InputProps {
   source: string
 }
+
+declare interface SelectOptions {
+  value: string;
+  label: string;
+}

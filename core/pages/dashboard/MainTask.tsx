@@ -7,11 +7,13 @@ import {
   TimeInput,
   useFormContext,
 } from "@/src/components/activeform";
+import SelectResourceInput from "@/src/components/activeform/SelectResourceInput";
 import { Calendar } from "@/src/components/calendar";
 import React, { useState } from "react";
 const MainDashboard = () => {
   const [show, setShow] = useState<boolean>(false);
   const { setForm, form } = useFormContext();
+  console.log({form})
 
   return (
     <>
@@ -28,6 +30,7 @@ const MainDashboard = () => {
         <TimeInput label="Start Time" source="task_start_time" />
         <DateInput label="End Date" source="task_end_date" />
         <TimeInput label="End Time" source="task_end_time" />
+        <SelectResourceInput source="target_classroom_code" resource="classroom" pks={["code"]} label="Target Classroom"/>
         <div className="mt-4 flex justify-end w-full">
           <Button btnType="primary" label="Save" />
         </div>

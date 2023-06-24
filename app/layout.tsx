@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import "@/src/assets/fontawesome/css/all.css";
 import LoadingOverlay from "@/src/contexts/LoadingContext";
+import UserConnection from "@/src/contexts/UserContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <LoadingOverlay>{children}</LoadingOverlay>
+        <UserConnection>
+          <LoadingOverlay>{children}</LoadingOverlay>
+        </UserConnection>
       </body>
     </html>
   );

@@ -33,7 +33,7 @@ export function useList<T>(props: Props): ListResult<T> {
     try {
       setLoading(true)
       await axios.get(`${baseUrl}${resource}?${params}`).then((res) => {
-        setDatas(res.data.map((item: any) => {
+        setDatas(res.data.data.map((item: any) => {
           return {
             ...item,
             _id_: _.pick(item, pks)
