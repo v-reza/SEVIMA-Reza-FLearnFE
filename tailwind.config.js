@@ -7,7 +7,8 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./core/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+    'node_modules/react-tailwindcss-datepicker/dist/index.esm.js'
   ],
   theme: {
     extend: {
