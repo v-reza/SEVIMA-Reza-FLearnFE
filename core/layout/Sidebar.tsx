@@ -38,13 +38,6 @@ const Sidebar = () => {
                   </div>
                 </Tooltip>
               </Link>
-              <div
-                className="flex items-center p-2 hover:bg-gray-700 hover:rounded-md cursor-pointer tooltip-right"
-                data-tooltip="Inbox"
-                data-tooltip-position="right"
-              >
-                <i className="far fa-inbox text-xl text-white"></i>
-              </div>
             </div>
           </div>
           <div className="pb-4 flex flex-col-reverse space-y-4 space-y-reverse w-full">
